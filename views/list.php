@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -14,7 +15,6 @@
 </head>
 <body>
 
-
 <div class="container" style="margin-top: 2%" class="align-content-center">
     <div class="jumbotron">
 
@@ -28,6 +28,7 @@
                         <thead>
                         <tr>
                             <td>ID</td>
+                            <td>Фото</td>
                             <td>Имя</td>
                             <td>Фамилия</td>
                             <td>Телефон</td>
@@ -41,6 +42,7 @@
                         <?php foreach ($users as $user) : ?>
                             <tr>
                                 <td><h4><?= $user['id'] ?></h4></td>
+                                <td><img src="http://localhost/16/img/<?= $user['photo'] ?>"></td>
                                 <td><h4><?= $user['username'] ?></h4></td>
                                 <td><h4><?= $user['lastname'] ?></h4></td>
                                 <td><h4><?= $user['phone'] ?></h4></td>
@@ -94,6 +96,9 @@
                                     <div style="margin-top: 20px" class="col-sm-6">
                                         <form enctype="multipart/form-data" action="users/create" class="form-group"
                                               method="post">
+
+
+                                            <p><input type="file" name="photo" required></p>
                                             <p><input minlength="2" maxlength="15" id="mw1" class="form-control"
                                                    type="text" name="username"
                                                    placeholder="Имя" required></p>
@@ -335,5 +340,11 @@
 
     </div>
 </div>
+
+
+
+
+
+
 </body>
 </html>

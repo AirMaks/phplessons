@@ -16,13 +16,17 @@
     <div class="row">
         <div class="col-sm-4">
             <h1><?= $user['id'] ?></h1>
-            <div style="margin: 10px" ><a href="avatar.php" ><img src="/16/i/0.jpg"></a></div>
+            <h2><?= $user['photo'] ?></h2>
             <h2><?= $user['username'] ?></h2>
             <h3><?= $user['lastname'] ?></h3>
             <h4><?= $user['phone'] ?></h4>
             <h5><?= $user['timestamp'] ?></h5>
             <?php if($editable === true) : ?>
                 <form action="users/<?= $user['id'] ?>/edit" method="post">
+                    <div class="form-group">
+                        <label for="photo">Изменить фото</label>
+                        <input type="file" id="photo" name="photo" value="<?= $user['photo'] ?>" required>
+                    </div>
                     <div class="form-group">
                         <label for="username">Имя</label>
                         <input type="text" class="form-control" name="username" id="username" value="<?= $user['username'] ?>" required>

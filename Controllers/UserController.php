@@ -8,6 +8,22 @@ class UserController
 {
     public function execute($method, $action, $id = null)
     {
+
+        $uploads_dir = dirname(__FILE__) . '/../img';
+        foreach ($_FILES as $key => $value) {
+            // var_dump($key);
+            // var_dump($value);
+            if ($value['error'] === UPLOAD_ERR_OK) {
+                $tmp_name = $_FILES[$key]["tmp_name"];
+                $name = basename($_FILES[$key]["name"]);
+                //var_dump($name);
+                echo move_uploaded_file($tmp_name, "$uploads_dir/$name");
+            }
+        }
+
+
+
+
         $_user = new User();
         if($method === 'GET'){
             if ($action === 'view' || $action === 'edit'){
@@ -28,6 +44,8 @@ class UserController
             }else if($action === 'delete'){
                 $_user->delete($id);
             }else if($action === 'create'){
+
+
                 $_user->create($_POST);
             }
             header('Location: /16/');
