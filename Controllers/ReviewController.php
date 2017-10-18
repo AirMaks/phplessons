@@ -1,36 +1,57 @@
 <?php
 
-
 namespace Controllers;
 use Models\Review;
 
 class ReviewController
 {
-    public function execute($method, $action, $id = null)
+    public function __construct()
     {
-        $_review = new Review();
-        if($method === 'GET'){
-            if ($action === 'view' || $action === 'edit'){
-                $review = $_review->getOne($id);
-                if(!$review){
-                    print_r('Отзыв не найден');
-                    die();
-                }
-                $editable = false;
-                if($action === 'edit'){
-                    $editable = true;
-                }
-                include_once dirname(__FILE__) . '/../views/reviews.php';
+        $this->review = new Review();
+    }
+
+    public function view($params)
+    {
+        $id = $params['id'];
+        $review = $this->review->getOne($id);
+        if (!$review) {
+            print_r('Отзыв не найден');
+            die();
+        }
+        $editable = false;
+        include_once dirname(__FILE__) . '/../views/reviews.php';
+    }
+
+    public function edit($params)
+    {
+        $id = $params['id'];
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $review = $this->review->getOne($id);
+            if (!$review) {
+                print_r('Отзыв не найден');
+                die();
             }
-        }else if($method === 'POST'){
-            if($action === 'edit'){
-                $_review->update($id, $_POST);
-            }else if($action === 'delete'){
-                $_review->delete($id);
-            }else if($action === 'create'){
-                $_review->create($_POST);
-            }
+
+            $editable = true;
+            // Отдаём views/reviews.php
+            include_once dirname(__FILE__) . '/../views/reviews.php';
+        } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->review->update($id, $_POST);
             header('Location: /16/');
         }
     }
+
+    public function delete($params)
+    {
+        $id = $params['id'];
+        $this->review->delete($id);
+        header('Location: /16/');
+    }
+
+    public function create()
+    {
+        $this->review->create($_POST);
+        header('Location: /16/');
+    }
+
 }

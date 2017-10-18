@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -14,9 +13,17 @@
     <base href="/16/">
 </head>
 <body>
+<div class="navbar" style="margin: -2px">
+    <nav class="navbar navbar-inverse bg-inverse">
+        <a class="navbar-brand" href="about_us.php">О нас</a>
+        <a class="navbar-brand" href="about_us.php">Контакты</a>
 
-<div class="container" style="margin-top: 2%" class="align-content-center">
-    <div class="jumbotron">
+
+</nav>
+</div>
+
+<div class="container" style="margin-top: -1.4%" class="align-content-center">
+<div class="jumbotron" style="background-color: aliceblue">
 
 
         <div class="row">
@@ -42,7 +49,7 @@
                         <?php foreach ($users as $user) : ?>
                             <tr>
                                 <td><h4><?= $user['id'] ?></h4></td>
-                                <td><img src="http://localhost/16/img/<?= $user['photo'] ?>"></td>
+                                <td><img src="http://localhost/16/img/<?= $user['photo'] ?>" width="40px" height="40px"></td>
                                 <td><h4><?= $user['username'] ?></h4></td>
                                 <td><h4><?= $user['lastname'] ?></h4></td>
                                 <td><h4><?= $user['phone'] ?></h4></td>
@@ -72,7 +79,7 @@
 
 
                     <!-- Trigger the modal with a button -->
-                    <button type="button" data-toggle="modal" data-target="#mymodal" class="btn btn-primary btn-lg">
+                    <button style="background-color: " type="button" data-toggle="modal" data-target="#mymodal" class="btn btn-block btn-lg">
                         Добавить
                     </button>
                     <!-- Modal -->
@@ -94,11 +101,15 @@
                                 </div>
                                 <div class="modal-body">
                                     <div style="margin-top: 20px" class="col-sm-6">
+
+
+
+
                                         <form enctype="multipart/form-data" action="users/create" class="form-group"
                                               method="post">
 
-
                                             <p><input type="file" name="photo" required></p>
+
                                             <p><input minlength="2" maxlength="15" id="mw1" class="form-control"
                                                    type="text" name="username"
                                                    placeholder="Имя" required></p>
@@ -189,7 +200,7 @@
 
 
                     <!-- Trigger the modal with a button -->
-                    <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-lg">
+                    <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-block btn-lg">
                         Добавить
                     </button>
                     <!-- Modal -->
@@ -218,6 +229,7 @@
                                                 Отмена
                                             </button>
                                         </form>
+
                                     </div>
                                     <div class="modal-footer">
                                     </div>
@@ -288,7 +300,7 @@
                     </table>
 
                     <!-- Trigger the modal with a button -->
-                    <button type="button" data-toggle="modal" data-target="#MyModal" class="btn btn-primary btn-lg">
+                    <button type="button" data-toggle="modal" data-target="#MyModal" class="btn btn-block btn-lg">
                         Добавить
                     </button>
                     <!-- Modal -->
@@ -339,8 +351,8 @@
 
 
     </div>
-</div>
 
+</div>
 
 
 
@@ -348,3 +360,4 @@
 
 </body>
 </html>
+

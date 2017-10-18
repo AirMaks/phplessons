@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col-sm-4">
             <h1><?= $user['id'] ?></h1>
-            <h2><?= $user['photo'] ?></h2>
+            <h2><img src="<?= $user['photo'] ?>" width="170px" height="170px"></h2>
             <h2><?= $user['username'] ?></h2>
             <h3><?= $user['lastname'] ?></h3>
             <h4><?= $user['phone'] ?></h4>
@@ -25,7 +25,7 @@
                 <form action="users/<?= $user['id'] ?>/edit" method="post">
                     <div class="form-group">
                         <label for="photo">Изменить фото</label>
-                        <input type="file" id="photo" name="photo" value="<?= $user['photo'] ?>" required>
+                        <p><input type="file" name="photo" required></p>
                     </div>
                     <div class="form-group">
                         <label for="username">Имя</label>
@@ -48,3 +48,21 @@
 </div>
 </body>
 </html>
+
+<?php
+// если была произведена отправка формы
+if(isset($_FILES['photo'])) {
+    // проверяем, можно ли загружать изображение
+    $check = can_upload($_FILES['photo']);
+
+    if($check === true){
+        // загружаем изображение на сервер
+        make_upload($_FILES['photo']);
+        echo "<strong>Фото успешно загружено!</strong>";
+    }
+    else{
+        // выводим сообщение об ошибке
+        echo "<strong>$check</strong>";
+    }
+}
+?>
