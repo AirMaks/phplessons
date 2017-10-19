@@ -33,6 +33,28 @@ class UserController
         function edit($params)
         {
             $id = $params['id'];
+
+            $uploads_dir = dirname(__FILE__) . '/../img';
+            foreach ($_FILES as $key => $value) {
+                // var_dump($key);
+                // var_dump($value);
+                if ($value['error'] === UPLOAD_ERR_OK) {
+                    $tmp_name = $_FILES[$key]["tmp_name"];
+                    $name = basename($_FILES[$key]["name"]);
+                    //var_dump($name);
+                    echo move_uploaded_file($tmp_name, "$uploads_dir/$name");
+
+                }
+                $_POST = [
+                    'name' => $_POST['name'],
+                    'lastname' => $_POST['lastname'],
+                    'phone' => $_POST['phone'],
+                    'photo' => "$name",
+                ];
+
+            }
+
+
             if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 $user = $this->user->getOne($id);
                 if (!$user) {

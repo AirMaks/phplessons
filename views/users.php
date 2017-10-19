@@ -23,7 +23,13 @@
             <h5><?= $user['timestamp'] ?></h5>
             <?php if ($editable === true) : ?>
 
-                <form action="users/<?= $user['id'] ?>/edit" method="post">
+                <form enctype="multipart/form-data" action="users/<?= $user['id'] ?>/edit" method="post">
+
+
+                        <p><input type="file" name="photo" required></p>
+
+
+
                     <div class="form-group">
                         <label for="name">Имя</label>
                         <input type="text" class="form-control" name="name" id="name"
@@ -44,10 +50,7 @@
                     </div>
 
 
-                    <div class="form-group">
-                        <label for="photo">Изменить фото</label>
-                        <p><input type="file" name="photo" required></p>
-                    </div>
+
                     <input type="hidden" name="id" value="<?= $_REQUEST['id'] ?>">
                     <button class="btn btn-primary" type="submit">Редактировать</button>
                 </form>
