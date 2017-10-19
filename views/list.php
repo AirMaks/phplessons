@@ -19,11 +19,11 @@
         <a class="navbar-brand" href="about_us.php">Контакты</a>
 
 
-</nav>
+    </nav>
 </div>
 
 <div class="container" style="margin-top: -1.4%" class="align-content-center">
-<div class="jumbotron" style="background-color: aliceblue">
+    <div class="jumbotron" style="background-color: aliceblue">
 
 
         <div class="row">
@@ -38,7 +38,7 @@
                             <td>Фото</td>
                             <td>Имя</td>
                             <td>Фамилия</td>
-                            <td>Телефон</td>
+                            <td>Номер телефона</td>
                             <td>Дата создания</td>
                             <td>Перейти</td>
                             <td>Редактировать</td>
@@ -49,8 +49,8 @@
                         <?php foreach ($users as $user) : ?>
                             <tr>
                                 <td><h4><?= $user['id'] ?></h4></td>
-                                <td><img src="http://localhost/16/img/<?= $user['photo'] ?>" width="40px" height="40px"></td>
-                                <td><h4><?= $user['username'] ?></h4></td>
+                                <td><a href="users/<?= $user['id'] ?>/view"><img src="http://localhost/16/img/<?= $user['photo'] ?>" width="40px" height="40px"></a></td>
+                                <td><h4><?= $user['name'] ?></h4></td>
                                 <td><h4><?= $user['lastname'] ?></h4></td>
                                 <td><h4><?= $user['phone'] ?></h4></td>
                                 <td><h4><?= $user['timestamp'] ?></h4></td>
@@ -79,7 +79,8 @@
 
 
                     <!-- Trigger the modal with a button -->
-                    <button style="background-color: " type="button" data-toggle="modal" data-target="#mymodal" class="btn btn-block btn-lg">
+                    <button style="background-color: " type="button" data-toggle="modal" data-target="#mymodal"
+                            class="btn btn-block btn-lg">
                         Добавить
                     </button>
                     <!-- Modal -->
@@ -103,23 +104,15 @@
                                     <div style="margin-top: 20px" class="col-sm-6">
 
 
-
-
                                         <form enctype="multipart/form-data" action="users/create" class="form-group"
                                               method="post">
 
                                             <p><input type="file" name="photo" required></p>
+                                            <p><input minlength="2" maxlength="15" id="mw1" class="form-control" type="text" name="name" placeholder="Имя" required></p>
+                                            <p><input minlength="2" maxlength="15" id="mw1" class="form-control" type="text" name="lastname" placeholder="Фамилия" required></p>
+                                            <p><input minlength="2" maxlength="15" id="mw1" class="form-control" type="text" name="phone" placeholder="Телефон" required></p>
 
-                                            <p><input minlength="2" maxlength="15" id="mw1" class="form-control"
-                                                   type="text" name="username"
-                                                   placeholder="Имя" required></p>
-                                            <p><input minlength="2" maxlength="15" id="mw1" class="form-control"
-                                                   type="text" name="lastname"
-                                                   placeholder="Фамилия" required></p>
-                                            <p><input class="form-control" id="mw1" minlength="12" type="tel" name="phone"
-                                                   placeholder="+7 (900) 123-45-67"
-                                                   pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}"
-                                                   required></p>
+
 
                                             <button id="mw1" class="btn btn-primary" type="submit">Добавить</button>
                                             <button id="mw1" type="button" class="btn btn-default" data-dismiss="modal">
@@ -217,13 +210,13 @@
                                 <div class="modal-body">
                                     <div style="margin-top: 20px" class="col-sm-6">
                                         <form action="products/create" class="form-group" method="post">
-                                            <p> <input id="mw1" class="form-control" type="text" name="title"
-                                                       placeholder="Название" required></p>
-                                            <p> <input id="mw1" class="form-control" type="text" name="description"
-                                                   placeholder="Описание" required></p>
-                                            <p> <input id="mw1" class="form-control" type="text" name="price"
-                                                   placeholder="Цена"
-                                                   required></p>
+                                            <p><input id="mw1" class="form-control" type="text" name="title"
+                                                      placeholder="Название" required></p>
+                                            <p><input id="mw1" class="form-control" type="text" name="description"
+                                                      placeholder="Описание" required></p>
+                                            <p><input id="mw1" class="form-control" type="text" name="price"
+                                                      placeholder="Цена"
+                                                      required></p>
                                             <button id="mw1" class="btn btn-primary" type="submit">Добавить</button>
                                             <button id="mw1" type="button" class="btn btn-default" data-dismiss="modal">
                                                 Отмена
@@ -318,12 +311,12 @@
                                     <div style="margin-top: 20px" class="col-sm-6">
                                         <form action="reviews/create" class="form-group" method="post">
                                             <p><input id="mw1" class="form-control" type="text" name="name"
-                                                   placeholder="Имя" required></p>
+                                                      placeholder="Имя" required></p>
                                             <p><input id="mw1" class="form-control" type="text" name="phone"
-                                                   placeholder="Номер телефона" required></p>
+                                                      placeholder="Номер телефона" required></p>
                                             <p><textarea id="mw1" class="form-control" type="text" name="text"
-                                                      placeholder="Сообщение"
-                                                      required></textarea></p>
+                                                         placeholder="Сообщение"
+                                                         required></textarea></p>
                                             <button id="mw1" class="btn btn-primary" type="submit">Добавить</button>
                                             <button id="mw1" type="button" class="btn btn-default" data-dismiss="modal">
                                                 Отмена
@@ -353,9 +346,6 @@
     </div>
 
 </div>
-
-
-
 
 
 </body>
