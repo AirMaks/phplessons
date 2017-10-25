@@ -14,12 +14,19 @@
     <div class="row">
         <div class="col-sm-4">
             <h1><?= $product['id'] ?></h1>
+            <h2><a href="http://localhost/16/products_image/<?= $product['image'] ?>" width="700px"><img src="http://localhost/16/products_image/<?= $product['image'] ?>" width="170px" ></a></h2>
             <h2><?= $product['title'] ?></h2>
             <h3><?= $product['description'] ?></h3>
             <h4>$<?= $product['price'] ?></h4>
             <h5><?= $product['timestamp'] ?></h5>
             <?php if($editable === true) : ?>
             <form action="products/<?= $product['id'] ?>/edit" method="post">
+
+                <div class="form-group">
+
+                    <label for="image">Картинка</label>
+                    <input  type="file" class="form-control" name="image">
+                </div>
                 <div class="form-group">
 
                     <label for="title">Название</label>

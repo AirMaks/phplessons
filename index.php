@@ -37,7 +37,12 @@ $router->post('/users\/(?P<id>\d+)\/edit/', 'UserController', 'edit');
 $router->post('/users\/(?P<id>\d+)\/delete/', 'UserController', 'delete');
 $router->post('/users\/create/', 'UserController', 'create');
 
+
+
+$router->get('/\/admin/', 'IndexController', 'admin');
 $router->get('/\//', 'IndexController');
+
+
 $router->execute();
 
 ?>

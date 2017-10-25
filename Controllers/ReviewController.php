@@ -37,7 +37,7 @@ class ReviewController
             include_once dirname(__FILE__) . '/../views/reviews.php';
         } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->review->update($id, $_POST);
-            header('Location: /16/');
+            header('Location: /16/admin');
         }
     }
 
@@ -45,7 +45,7 @@ class ReviewController
     {
         $id = $params['id'];
         $this->review->delete($id);
-        header('Location: /16/');
+        header('Location: /16/admin');
     }
 
     public function create()

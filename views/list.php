@@ -13,14 +13,24 @@
     <base href="/16/">
 </head>
 <body>
+
+
+
 <div class="navbar" style="margin: -2px">
     <nav class="navbar navbar-inverse bg-inverse">
+
+
+            <a class="navbar-brand" href="">Главная</a>>
+            <a class="navbar-brand"  href="admin">Панель администратора</a>
+
         <a class="navbar-brand" href="about_us.php">О нас</a>
         <a class="navbar-brand" href="about_us.php">Контакты</a>
-
+        </ul>
 
     </nav>
 </div>
+
+
 
 <div class="container" style="margin-top: -1.4%" class="align-content-center">
     <div class="jumbotron" style="background-color: aliceblue">
@@ -49,7 +59,7 @@
                         <?php foreach ($users as $user) : ?>
                             <tr>
                                 <td><h4><?= $user['id'] ?></h4></td>
-                                <td><a href="users/<?= $user['id'] ?>/view"><img src="http://localhost/16/img/<?= $user['photo'] ?>" width="40px" height="40px"></a></td>
+                                <td><a href="users/<?= $user['id'] ?>/view"><img src="http://localhost/16/img/<?= $user['photo'] ?>" width="40px"></a></td>
                                 <td><h4><?= $user['name'] ?></h4></td>
                                 <td><h4><?= $user['lastname'] ?></h4></td>
                                 <td><h4><?= $user['phone'] ?></h4></td>
@@ -152,6 +162,7 @@
                         <tr>
                             <td>ID</td>
                             <td>Название</td>
+                            <td>Фото</td>
                             <td>Описание</td>
                             <td>Цена</td>
                             <td>Дата создания</td>
@@ -164,8 +175,9 @@
                         <?php foreach ($products as $product) : ?>
                             <tr>
                                 <td><h4><?= $product['id'] ?></h4></td>
+                                <td><a href="products/<?= $product['id'] ?>/view"><img src="http://localhost/16/products_image/<?= $product['image'] ?>" width="40px"></a></td>
                                 <td><h4><?= $product['title'] ?></h4></td>
-                                <td><h4><?= $product['description'] ?></h4></td>
+                               <td><h4><?= $product['description'] ?></h4></td>
                                 <td><h4>$<?= $product['price'] ?></h4></td>
                                 <td><h4><?= $product['timestamp'] ?></h4></td>
                                 <td>
@@ -209,9 +221,11 @@
                                 </div>
                                 <div class="modal-body">
                                     <div style="margin-top: 20px" class="col-sm-6">
-                                        <form action="products/create" class="form-group" method="post">
+                                        <form enctype="multipart/form-data" action="products/create" class="form-group" method="post">
+                                            <p><input type="file" name="image"></p>
                                             <p><input id="mw1" class="form-control" type="text" name="title"
                                                       placeholder="Название" required></p>
+
                                             <p><input id="mw1" class="form-control" type="text" name="description"
                                                       placeholder="Описание" required></p>
                                             <p><input id="mw1" class="form-control" type="text" name="price"

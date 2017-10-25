@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col-sm-4">
             <h1><?= $user['id'] ?></h1>
-            <h2><a href="http://localhost/16/img/<?= $user['photo'] ?>" width="700px" height="700px"><img src="http://localhost/16/img/<?= $user['photo'] ?>" width="170px" height="170px"></a></h2>
+            <h2><a href="http://localhost/16/img/<?= $user['photo'] ?>" width="700px" ><img src="http://localhost/16/img/<?= $user['photo'] ?>" width="170px" ></a></h2>
             <h2><?= $user['name'] ?></h2>
             <h2><?= $user['lastname'] ?></h2>
             <h2><?= $user['phone'] ?></h2>
