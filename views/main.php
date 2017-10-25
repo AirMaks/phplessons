@@ -112,7 +112,7 @@
 <div class="container" style="margin-top: -1.4%" class="align-content-center">
     <div class="jumbotron" style="background-color: aliceblue">
         <h1 style="text-align: center">Спортивные товары</h1>
-    <div class="row">
+    <div class="row" align="center">
         <?php foreach ($products as $product) : ?>
         <div class="col-md-4">
             <form action="#" method="post">
